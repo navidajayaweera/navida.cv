@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Navida Jayaweera</title>
+  <link rel="icon" type="image/svg+xml" href="/public/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/global.css">
+  <link rel="stylesheet" href="/gallery/gallery.css">
+</head>
+
+<body>
+  <main class="gallery-shell">
+    <header class="gallery-header">
+      <h1 class="name gallery-title">portfolio</h1>
+      <a class="back-link" href="/">← back</a>
+    </header>
+
+    <section id="galleryGrid" class="gallery-grid" aria-live="polite"></section>
+  </main>
+
+  <section id="footer" class="gallery-footer">
+    <footer class="site-footer">
+      <span class="footer-text">last updated on 2026 january</span>
+      <span class="footer-text">© all rights reserved</span>
+    </footer>
+  </section>
+
+  <script>
+    const portfolioImages = [
+      "img (1).webp",
+      "img (2).webp",
+      "img (3).webp",
+      "img (4).webp",
+      "img (5).webp",
+      "img (6).webp",
+      "img (7).webp",
+      "img (8).webp",
+      "img (9).webp",
+      "img (10).webp",
+      "img (11).webp",
+      "img (12).webp",
+      "img (13).webp",
+      "img (14).webp",
+      "img (15).webp",
+      "img (16).webp",
+      "img (17).webp",
+      "img (18).webp",
+      "img (19).webp",
+      "img (20).webp",
+      "img (21).webp",
+      "img (22).webp",
+      "img (23).webp",
+      "img (24).webp",
+      "img (25).webp",
+      "img (26).webp",
+      "img (27).webp",
+      "img (28).webp",
+      "img (29).webp",
+      "img (30).webp",
+      "img (31).webp",
+      "img (32).webp",
+      "img (33).webp",
+      "img (34).webp",
+      "img (35).webp",
+      "img (36).webp",
+      "img (37).webp",
+      "img (38).webp",
+      "img (39).webp",
+      "img (40).webp",
+      "img (41).webp",
+      "img (42).webp",
+      "img (43).webp",
+      "img (44).webp",
+      "img (45).webp",
+      "img (46).webp",
+      "img (47).webp",
+      "img (48).webp",
+      "img (49).webp",
+      "img (50).webp",
+      "img (51).webp",
+      "img (52).webp",
+      "img (53).webp",
+      "img (54).webp",
+      "img (55).webp",
+      "img (56).webp",
+      "img (57).webp",
+      "img (58).webp",
+      "img (59).webp",
+      "img (60).webp",
+      "img (61).webp",
+      "img (62).webp",
+      "img (63).webp",
+      "img (64).webp",
+      "img (65).webp",
+      "img (66).webp",
+      "img (67).webp",
+      "img (68).webp",
+      "img (69).webp",
+      "img (70).webp",
+      "img (71).webp",
+      "img (72).webp"
+    ];
+
+    const galleryGrid = document.getElementById("galleryGrid");
+
+    portfolioImages.forEach((fileName, index) => {
+      const item = document.createElement("figure");
+      item.className = "gallery-item";
+
+      const image = new Image();
+      image.src = `/portfolio/imgs/${fileName}`;
+      image.alt = `Portfolio image ${index + 1}`;
+      image.loading = "lazy";
+      image.decoding = "async";
+
+      image.addEventListener("load", () => {
+        const width = image.naturalWidth || 1;
+        const height = image.naturalHeight || 1;
+        item.style.aspectRatio = `${width} / ${height}`;
+      });
+
+      image.addEventListener("error", () => {
+        item.remove();
+      });
+
+      item.appendChild(image);
+      galleryGrid.appendChild(item);
+    });
+  </script>
+</body>
+
+</html>
