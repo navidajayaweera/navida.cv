@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Navida Jayaweera</title>
+  <link rel="icon" type="image/svg+xml" href="../public/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../global.css">
+  <link rel="stylesheet" href="../gallery/gallery.css">
+</head>
+
+<body>
+  <main class="gallery-shell">
+    <header class="gallery-header">
+      <h1 class="name gallery-title">portfolio</h1>
+      <a class="back-link" href="../index.html">← back</a>
+    </header>
+
+    <section id="galleryGrid" class="gallery-grid" aria-live="polite"></section>
+  </main>
+
+  <section id="footer" class="gallery-footer">
+    <footer class="site-footer">
+      <span class="footer-text">last updated on 2026 january</span>
+      <span class="footer-text">© all rights reserved</span>
+    </footer>
+  </section>
+
+  <script>
+    const portfolioImages = [
+      "364 NCAS-74.jpg",
+      "365 NCAS-35.jpg",
+      "366 NCAS-22.jpg",
+      "366 NCAS-23.jpg",
+      "366 NCAS-24.jpg",
+      "366 NCAS-25.jpg",
+      "366 NCAS-26.jpg",
+      "366 NCAS-61.jpg",
+      "370 NCAS-30.jpg",
+      "370 NCAS-31.jpg",
+      "370 NCAS-32.jpg",
+      "370 NCAS-52.jpg",
+      "370 NCAS-54.jpg",
+      "370 NCAS-60.jpg"
+    ];
+
+    const galleryGrid = document.getElementById("galleryGrid");
+
+    portfolioImages.forEach((fileName, index) => {
+      const item = document.createElement("figure");
+      item.className = "gallery-item";
+
+      const image = new Image();
+      image.src = `imgs/${fileName}`;
+      image.alt = `Portfolio image ${index + 1}`;
+      image.loading = "lazy";
+      image.decoding = "async";
+
+      image.addEventListener("load", () => {
+        const width = image.naturalWidth || 1;
+        const height = image.naturalHeight || 1;
+        item.style.aspectRatio = `${width} / ${height}`;
+      });
+
+      image.addEventListener("error", () => {
+        item.remove();
+      });
+
+      item.appendChild(image);
+      galleryGrid.appendChild(item);
+    });
+  </script>
+</body>
+
+</html>
